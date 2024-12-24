@@ -12,7 +12,7 @@ const configOptions: TconfigOptions = {
   bcryptSaltRounds: Number(process.env.BCRYPT_SALT_ROUNDS),
   jwtAccessTokenSecret: `${process.env.JWT_ACCESS_TOKEN_SECRET}`,
   jwtRegreshTokenSecret: `${process.env.JWT_REFRESH_TOKEN_SECRET}`,
-  jwtAccessTokenExpiresIn: `${process.env.JWT_ACCESS_TOKEN_EXPIRES_IS}`,
+  jwtAccessTokenExpiresIn: `${process.env.JWT_ACCESS_TOKEN_EXPIRES_IN}`,
   jwtRefreshTokenExpiresIn: `${process.env.JWT_REFRESH_TOKEN_EXPIRES_IN}`,
   getConfigOption: (option) => configOptions[option],
 };
