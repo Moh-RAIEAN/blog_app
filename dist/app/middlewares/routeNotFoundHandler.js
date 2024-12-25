@@ -12,8 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const http_status_codes_1 = require("http-status-codes");
 const catchAsync_1 = __importDefault(require("../utils/catchAsync"));
+const sendResponse_1 = __importDefault(require("../utils/sendResponse"));
 const routeNotFoundHandler = () => (0, catchAsync_1.default)((_, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.status(404).json({ status: 404, message: 'requested url not found!' });
+    (0, sendResponse_1.default)(res, {
+        success: false,
+        statusCode: http_status_codes_1.StatusCodes.NOT_FOUND,
+        message: 'Requested url not found!',
+    });
 }));
 exports.default = routeNotFoundHandler;
