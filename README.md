@@ -41,7 +41,7 @@ To install this server project into your local machine, first clone the reposito
 Install install project dependencies with npm
 
 ```bash
-  cd ./cloned/BlogApp
+  cd ./BlogApp
   npm i
 ```
 
