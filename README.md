@@ -82,7 +82,7 @@ Start the server in production mode
 
 ## 🚏 API endpoints
 
-Local server urls are lister down bellow:-
+Local server urls are listed down bellow:-
 
 ### Public routes
 
