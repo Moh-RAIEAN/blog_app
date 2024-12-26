@@ -25,6 +25,13 @@ const createBlogIntoDb = (userId, payload) => __awaiter(void 0, void 0, void 0, 
         throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'User not found');
     if (isUserExist === null || isUserExist === void 0 ? void 0 : isUserExist.isBlocked)
         throw new AppError_1.default(http_status_codes_1.StatusCodes.FORBIDDEN, 'Forbidden access');
+    if ((isUserExist === null || isUserExist === void 0 ? void 0 : isUserExist.role) !== 'user')
+        throw new AppError_1.default(http_status_codes_1.StatusCodes.FORBIDDEN, 'Forbidden access', [
+            {
+                path: 'role',
+                message: `${isUserExist === null || isUserExist === void 0 ? void 0 : isUserExist.role} is not permitted for this action`,
+            },
+        ]);
     payload.author = isUserExist === null || isUserExist === void 0 ? void 0 : isUserExist._id;
     const createdBlog = yield blog_model_1.default.create(payload);
     if (!createdBlog)

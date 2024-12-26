@@ -15,6 +15,13 @@ const createBlogIntoDb = async (
   if (!isUserExist) throw new AppError(StatusCodes.NOT_FOUND, 'User not found');
   if (isUserExist?.isBlocked)
     throw new AppError(StatusCodes.FORBIDDEN, 'Forbidden access');
+  if (isUserExist?.role !== 'user')
+    throw new AppError(StatusCodes.FORBIDDEN, 'Forbidden access', [
+      {
+        path: 'role',
+        message: `${isUserExist?.role} is not permitted for this action`,
+      },
+    ]);
   payload.author = isUserExist?._id;
   const createdBlog = await Blog.create(payload);
   if (!createdBlog)
