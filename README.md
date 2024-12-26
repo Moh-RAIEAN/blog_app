@@ -82,19 +82,21 @@ Start the server in production mode
 
 ## 🚏 API endpoints
 
+Local server urls are lister down bellow:-
+
 ### Public routes
 
-Create a user:- /api/auth/register (post) <br/>
-Login a user:- /api/auth/login (post)<br/>
-Get all blogs:- /api/blogs?search=technology&sortBy=createdAt&sortOrder=desc&filter=60b8f42f9c2a3c9b7cbd4f18 (get)<br/>
+Create a user:- http://localhost:5000/api/auth/register (post) <br/>
+Login a user:- http://localhost:5000/api/auth/login (post)<br/>
+Get all blogs:- http://localhost:5000/api/blogs?search=technology&sortBy=createdAt&sortOrder=desc&filter=60b8f42f9c2a3c9b7cbd4f18 (get)<br/>
 
 ### User routes
 
-Create a blog:- /api/blogs (post)<br/>
-Update a blog:- /api/blogs/:id (patch)<br/>
-Delete a blog:- /api/blogs/:id (delete)<br/>
+Create a blog:- http://localhost:5000/api/blogs (post)<br/>
+Update a blog:- http://localhost:5000/api/blogs/:id (patch)<br/>
+Delete a blog:- http://localhost:5000/api/blogs/:id (delete)<br/>
 
 ### Admin routes
 
-Block a user:- /api/admin/users/:userId/block (patch)<br/>
-Delete a blog as admin:- /api/admin/blogs/:id (delete)<br/>
+Block a user:- http://localhost:5000/api/admin/users/:userId/block (patch)<br/>
+Delete a blog as admin:- http://localhost:5000/api/admin/blogs/:id (delete)<br/>
