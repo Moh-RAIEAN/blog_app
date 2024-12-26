@@ -20,19 +20,19 @@ const user_model_1 = __importDefault(require("../User/user.model"));
 const blockUserInDb = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     const isUserExist = yield user_model_1.default.findById(userId);
     if (!isUserExist)
-        throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'can not block user, user not found');
+        throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'User not found');
     const blockedUser = yield user_model_1.default.findByIdAndUpdate(userId, { isBlocked: true }, { new: true, runValidators: true });
     if (!blockedUser)
-        throw new AppError_1.default(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, 'can not block user, internal server error');
+        throw new AppError_1.default(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, 'Can not block user, internal server error');
     return blockedUser;
 });
 const deleteABlogFromDb = (blogId) => __awaiter(void 0, void 0, void 0, function* () {
     const isBlogExist = yield blog_model_1.default.findById(blogId);
     if (!isBlogExist)
-        throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'requested blog to delete is not found');
+        throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, 'Blog not found');
     const deletedBlog = yield blog_model_1.default.findByIdAndDelete(blogId);
     if (!deletedBlog)
-        throw new AppError_1.default(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, 'can not delete blog, internal server error');
+        throw new AppError_1.default(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, 'Can not delete blog, internal server error');
     return deletedBlog;
 });
 exports.AdminServices = { blockUserInDb, deleteABlogFromDb };
