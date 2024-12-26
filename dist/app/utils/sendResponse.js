@@ -16,7 +16,8 @@ const sendResponse = (response, responseData) => {
         responseObj.data = responseData === null || responseData === void 0 ? void 0 : responseData.data;
     if (responseData === null || responseData === void 0 ? void 0 : responseData.error)
         responseObj.error = responseData === null || responseData === void 0 ? void 0 : responseData.error;
-    responseObj.stack = (_b = responseData === null || responseData === void 0 ? void 0 : responseData.stack) !== null && _b !== void 0 ? _b : '';
+    if (responseData === null || responseData === void 0 ? void 0 : responseData.error)
+        responseObj.stack = (_b = responseData === null || responseData === void 0 ? void 0 : responseData.stack) !== null && _b !== void 0 ? _b : '';
     response.status(Number(responseObj.statusCode)).json(responseObj);
 };
 exports.sendResponse = sendResponse;
