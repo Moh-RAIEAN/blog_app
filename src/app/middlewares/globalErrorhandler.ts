@@ -1,6 +1,7 @@
 import { ErrorRequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { ZodError } from 'zod';
+import getConfigOption from '../config';
 import AppError from '../errors/AppError';
 import handleAppError from '../errors/handleAppError';
 import handleCastError from '../errors/handleCastError';
@@ -20,7 +21,8 @@ export default function (): ErrorRequestHandler {
   };
 
   return (error, _, res, next) => {
-    errorObj.stack = JSON.stringify(error);
+    errorObj.stack =
+      getConfigOption('env') === 'development' ? JSON.stringify(error) : '';
     if (error instanceof ZodError)
       errorObj = { ...errorObj, ...handleZodError(error) };
     else if (error?.name === 'ValidationError')

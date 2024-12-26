@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = default_1;
 const http_status_codes_1 = require("http-status-codes");
 const zod_1 = require("zod");
+const config_1 = __importDefault(require("../config"));
 const AppError_1 = __importDefault(require("../errors/AppError"));
 const handleAppError_1 = __importDefault(require("../errors/handleAppError"));
 const handleCastError_1 = __importDefault(require("../errors/handleCastError"));
@@ -33,7 +34,8 @@ function default_1() {
         stack: '',
     };
     return (error, _, res, next) => {
-        errorObj.stack = JSON.stringify(error);
+        errorObj.stack =
+            (0, config_1.default)('env') === 'development' ? JSON.stringify(error) : '';
         if (error instanceof zod_1.ZodError)
             errorObj = Object.assign(Object.assign({}, errorObj), (0, handleZodError_1.default)(error));
         else if ((error === null || error === void 0 ? void 0 : error.name) === 'ValidationError')
