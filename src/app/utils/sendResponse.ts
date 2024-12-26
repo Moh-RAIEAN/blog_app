@@ -24,7 +24,7 @@ export const sendResponse = <T>(
 
   if (responseData?.data) responseObj.data = responseData?.data;
   if (responseData?.error) responseObj.error = responseData?.error;
-  if (responseData?.stack) responseObj.stack = responseData?.stack;
+  responseObj.stack = responseData?.stack ?? '';
 
   response.status(Number(responseObj.statusCode)).json(responseObj);
 };
