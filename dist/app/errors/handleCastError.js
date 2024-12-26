@@ -7,11 +7,11 @@ const handleCastError = (error) => {
         message: '',
         errorSources: [],
     };
-    errorObj.message = `in valid ${error.kind}`;
+    errorObj.message = `Validation error`;
     return Object.assign(Object.assign({}, errorObj), { errorSources: [
             {
                 path: error.path,
-                message: `\`${error.value}\` is not a valid ${error.path}`,
+                message: `\`${error.value}\` is not a valid ${error.kind} value for:- ${error.path}`,
             },
         ] });
 };
